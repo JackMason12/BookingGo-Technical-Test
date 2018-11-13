@@ -64,7 +64,8 @@ if (!arg_format.test(args.dropoff)) {
 if (args.verbose) {
   console.log("Passengers: " + args.passengers);
 }
-function filter(entry) {
+
+function filter(entry) { //filter function for number of passengers
   if (args.passengers > 4) {
     //remove entries for <=4 passengers
     if (entry.car_type == "STANDARD") return false;
