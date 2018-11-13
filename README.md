@@ -1,14 +1,16 @@
-#BookingGo-Technical-Test
+**BookingGo-Technical-Test**
 
-##Setup
+**Setup**
 
 The application is build in node-js, using the argparse and request libraries.
 
 The node project can be initialised through 'npm init', and the relevant libraries can be installed with 'npm install argparse' and 'npm install request'.
 
 
-##Part1
-###Dave's Taxis
+**Part1**
+
+**Dave's Taxis**
+
 The application can be run using the command 'node Part1.js' this command has the arguments:
 -'-p'/'--pickup': The pickup location in the form latitude,longitude. (Required Argument)
 -'-d'/'--dropoff': The dropoff location in the form latitude,longitude. (Required Argument)
@@ -19,7 +21,8 @@ The application can be run using the command 'node Part1.js' this command has th
 Example:
 'node Part1.js -p 20.0,20.0 -d 21.0,20.0 -passengers 4'
 
-###Cheapest Option
+**Cheapest Option**
+
 The application can be run using the command 'node Part1-2.js' this command has similar arguments to the above:
 -'-p'/'--pickup': The pickup location in the form latitude,longitude. (Required Argument)
 -'-d'/'--dropoff': The dropoff location in the form latitude,longitude. (Required Argument)
@@ -29,4 +32,4 @@ The application can be run using the command 'node Part1-2.js' this command has 
 Example:
 'node Part1-2.js -p 20.0,20.0 -d 21.0,20.0'
 
-##Part2
+**Part2**
