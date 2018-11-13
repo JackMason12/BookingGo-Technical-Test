@@ -8,7 +8,7 @@ var parser = new ArgumentParser({
 });
 //add pickup argument, required argument to specify the dropoff location
 parser.addArgument(
-  [ '-p', '--pickup'],
+  ['-p', '--pickup'],
   {
     help: 'REQUIRED Pickup location, specified in format " latitude,longitude "',
     required: true
@@ -16,7 +16,7 @@ parser.addArgument(
 );
 //add dropoff argument, required argument to specify the dropoff location
 parser.addArgument(
-  [ '-d', '--dropoff'],
+  ['-d', '--dropoff'],
   {
     help: 'REQUIRED Dropoff location, specified in format "latitude,longitude"',
     required: true
@@ -24,10 +24,20 @@ parser.addArgument(
 );
 //add verbose option, we print out loads of stuff when verbose is enabled.
 parser.addArgument(
-  [ '-verbose'],
+  ['-verbose'],
   {
     help: 'Show detailed information',
-    nargs: 0
+    nargs: 0,
+    action: 'storeTrue'
+  }
+);
+
+parser.addArgument(
+  ['-passengers'],
+  {
+    help: 'Specify the number of passengers for this journey',
+    type: 'int',
+    defaultValue: 0
   }
 );
 
@@ -48,6 +58,29 @@ if (!arg_format.test(args.pickup)) {
 if (!arg_format.test(args.dropoff)) {
   console.error("'dropoff' is not in correct format, use --help for help.")
   process.exit(1);
+}
+
+//set up filtering function for our array of options so we can filter for a set number of passengers
+if (args.verbose) {
+  console.log("Passengers: " + args.passengers);
+}
+function filter(entry) {
+  if (args.passengers > 4) {
+    //remove entries for <=4 passengers
+    if (entry.car_type == "STANDARD") return false;
+    if (entry.car_type == "EXECUTIVE") return false;
+    if (entry.car_type == "LUXURY") return false;
+  }
+  if (args.passengers > 6) {
+    //remove entries for <=6 passengers
+    if (entry.car_type == "PEOPLE_CARRIER") return false;
+    if (entry.car_type == "LUXURY_PEOPLE_CARRIER") return false;
+  }
+  if (args.passengers > 16) {
+    //no entries can handle > 16 passengers
+    return false;
+  }
+  return true;
 }
 
 //use 'request' package in npm to perform our requests
@@ -113,10 +146,18 @@ request(request_url, {timeout:2000}, function (error, response, body) {
     process.exit(1); //exit the process
   }
 
+  if (args.verbose) {
+    console.log("Unfiltered Results:");
+    body.options.forEach(function(entry) {
+      console.log(entry.car_type + ' - ' + entry.price);
+    });
+  }
+
   //if there are no errors
   //sort the responses by their price (descending)
   body.options.sort(function(a,b) { return parseFloat(b.price) - parseFloat(a.price) } );
-  console.log("Results:"); //print out each of the responses
+  body.options = body.options.filter(filter); //apply filter
+  console.log("Filtered Results:"); //print out each of the responses
   body.options.forEach(function(entry) {
     console.log(entry.car_type + ' - ' + entry.price);
   });
