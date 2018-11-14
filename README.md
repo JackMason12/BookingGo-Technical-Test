@@ -2,12 +2,13 @@
 
 **Setup**
 
-The application is build in node-js, using the argparse, request and express libraries.
+The applications are built in node-js, using the argparse, request and express libraries. The applications were coded on linux, so windows compatibility is unknown.
 
-The node project can be initialised through 'npm init', and the relevant libraries can be installed with 'npm install argparse --save', 'npm install request --save' and 'npm install express --save'.
+In order to run the programs, simple create a directory to hold the files, move them in and run the command 'npm install'. This will use the existing package.json to install the dependencies for the programs.
 
 **Part1**
 **Dave's Taxis**
+
 Code:Part1.js
 
 The application can be run using the command 'node Part1.js' this command has the arguments:
@@ -26,6 +27,7 @@ Example:
 'node Part1.js -p 20.0,20.0 -d 21.0,20.0 -passengers 4'
 
 **Cheapest Option**
+
 Code:Part1-2.js
 
 The application can be run using the command 'node Part1-2.js' this command has similar arguments to the above:
@@ -42,6 +44,7 @@ Example:
 'node Part1-2.js -p 20.0,20.0 -d 21.0,20.0'
 
 **Part2**
+
 Code:server.js
 
 The server is opened using the command 'node server.js' the command has no arguments. The server is opened on port 3000, and querying the api is done as follows:
