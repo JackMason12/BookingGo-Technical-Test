@@ -9,7 +9,7 @@ In order to run the programs, simple create a directory to hold the files, move 
 **Part1**
 **Dave's Taxis**
 
-Code:Part1.js
+Code: Part1.js
 
 The application can be run using the command 'node Part1.js' this command has the arguments:
 
@@ -28,7 +28,7 @@ Example:
 
 **Cheapest Option**
 
-Code:Part1-2.js
+Code: Part1-2.js
 
 The application can be run using the command 'node Part1-2.js' this command has similar arguments to the above:
 
@@ -45,7 +45,7 @@ Example:
 
 **Part2**
 
-Code:server.js
+Code: server.js
 
 The server is opened using the command 'node server.js' the command has no arguments. The server is opened on port 3000, and querying the api is done as follows:
 
