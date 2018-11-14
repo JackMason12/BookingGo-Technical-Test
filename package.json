@@ -6,10 +6,15 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JackMason12/BookingGo-Technical-Test"
+  },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "argparse": "^1.0.10",
+    "express": "^4.16.4",
     "request": "^2.88.0"
   }
 }

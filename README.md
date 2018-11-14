@@ -2,14 +2,13 @@
 
 **Setup**
 
-The application is build in node-js, using the argparse and request libraries.
+The application is build in node-js, using the argparse, request and express libraries.
 
-The node project can be initialised through 'npm init', and the relevant libraries can be installed with 'npm install argparse' and 'npm install request'.
-
+The node project can be initialised through 'npm init', and the relevant libraries can be installed with 'npm install argparse --save', 'npm install request --save' and 'npm install express --save'.
 
 **Part1**
-
 **Dave's Taxis**
+Code:Part1.js
 
 The application can be run using the command 'node Part1.js' this command has the arguments:
 
@@ -27,6 +26,7 @@ Example:
 'node Part1.js -p 20.0,20.0 -d 21.0,20.0 -passengers 4'
 
 **Cheapest Option**
+Code:Part1-2.js
 
 The application can be run using the command 'node Part1-2.js' this command has similar arguments to the above:
 
@@ -42,3 +42,14 @@ Example:
 'node Part1-2.js -p 20.0,20.0 -d 21.0,20.0'
 
 **Part2**
+Code:server.js
+
+The server is opened using the command 'node server.js' the command has no arguments. The server is opened on port 3000, and querying the api is done as follows:
+
+Exercise 1 - Sorted API results from any of the suppliers: Navigate to localhost:3000/[supplier name] with the GET parameters pickup and dropoff, formatted in the same way as in command line arguments for the previous parts. It also has the optional parameter passengers to filter out options that cannot carry the amount of passengers.
+
+Example: localhost:3000/dave?pickup=20.0,20.0&dropoff=20.0,21.0&passengers=5
+
+Exercise 2 - Cheapest supplier for each vehicle: Navite to localhost:3000/cheapest with the GET parameters pickup and dropoff as above.
+
+Example: localhost:3000/cheapest?pickup=20.0,20.0&dropoff=20.0,20.0
